@@ -42,7 +42,7 @@ function getAuthorByName(authorName, authors) {
  ****************************************************************/
 function bookCountsByAuthor(authors) {
   // Your code goes here
-  const colors =
+  
  return authors.map(element => ({author : element.name, bookCount: element.books.length}));
 }
 console.log(bookCountsByAuthor(authors));
@@ -75,8 +75,14 @@ function booksByColor(books) {
  ****************************************************************/
 function titlesByAuthorName(authorName, authors, books) {
   // Your code goes here
+  let booksOfAuthor = books.filter((book) => book.authors.find((author) => author.name.toLowerCase()
+  === authorName.toLowerCase()
+  ));
+  let booksTitles =booksOfAuthor.map((book) => book.title);
+
+  return books.title;
 }
-// console.log(titlesByAuthorName("George R.R. Martin", authors, books));
+ console.log(titlesByAuthorName("George R.R. Martin", authors, books));
 
 /**************************************************************
  * mostProlificAuthor(authors):
@@ -86,9 +92,16 @@ function titlesByAuthorName(authorName, authors, books) {
  * Note: assume there will never be a tie
  ****************************************************************/
 function mostProlificAuthor(authors) {
+  let booksAmountArray = authors.map((author) => author.books.length);
+  let maxBooks = Math.max 
+  (...booksAmountArray);
+  let indexofmax = booksAmountArray
+  .indexofmax(maxBooks);
+  let nameOfMAX = authors[indexofmax].name;
+  return nameOfMAX;
   // Your code goes here
 }
-// console.log(mostProlificAuthor(authors));
+ console.log(mostProlificAuthor(authors));
 
 /**************************************************************
  * relatedBooks(bookId, authors, books):
@@ -115,8 +128,15 @@ function mostProlificAuthor(authors) {
  ****************************************************************/
 function relatedBooks(bookId, authors, books) {
   // Your code goes here
+  let AuthorOftheBookInfo = books.find((book) => book.id === bookId);
+  let AuthorOftheBookNames = AuthorOftheBookInfo.authors.map((author) => author.name);
+  let listOfBooks = AuthorOftheBookNames.map((author) => titlesByAuthorName(author,authors,books));
+  let StringOgBooks = listOfBooks.join();
+  let ArrayOfTitle = StringOgBooks.spilt(",");
+  return ArrayOfTitle;
+
 }
-// console.log(relatedBooks(50, authors, books));
+console.log("names".AuthorOftheBookNames );
 
 /**************************************************************
  * friendliestAuthor(authors):
